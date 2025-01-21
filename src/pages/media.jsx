@@ -1,15 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { 
-  PlayCircle,
-  Calendar,
-  ArrowRight 
-} from 'lucide-react';
+import { PlayCircle, Calendar, ArrowRight } from 'lucide-react';
 
 const MediaPage = () => {
   const [activeTab, setActiveTab] = useState('articles');
   const [playingVideo, setPlayingVideo] = useState(null);
   const videoRefs = useRef({});
 
+  // Content definitions remain the same
   const featuredArticle = {
     id: 'featured',
     title: "Breakthrough in Medical Research: A New Era in Healthcare",
@@ -49,6 +46,7 @@ const MediaPage = () => {
     }
   ];
 
+
   const featuredVideo = {
     id: 'featured-video',
     title: "Revolutionizing Healthcare Through Innovation",
@@ -58,6 +56,7 @@ const MediaPage = () => {
     date: "January 2024",
     description: "A comprehensive overview of groundbreaking medical innovations and their impact on modern healthcare practices."
   };
+
 
   const videos = [
     {
@@ -98,7 +97,9 @@ const MediaPage = () => {
     }
   ];
 
+
   const handleVideoPlay = (videoId) => {
+    // Video handling logic remains the same
     Object.values(videoRefs.current).forEach(videoRef => {
       if (videoRef && videoRef !== videoRefs.current[videoId]) {
         videoRef.pause();
@@ -117,16 +118,16 @@ const MediaPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Media Center
             </h1>
-            <div className="w-20 h-1 bg-gradient-to-r from-gray-600 to-gray-900 mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
               Stay informed with our latest research findings, medical breakthroughs, 
               and healthcare innovations.
             </p>
@@ -135,7 +136,7 @@ const MediaPage = () => {
       </section>
 
       {/* Content Navigation */}
-      <section className="border-b border-gray-200">
+      <section className="border-b border-blue-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-12">
             {['articles', 'videos'].map((tab) => (
@@ -143,11 +144,11 @@ const MediaPage = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`py-4 px-2 relative font-medium text-lg transition-colors duration-200
-                  ${activeTab === tab ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
+                  ${activeTab === tab ? 'text-blue-900' : 'text-blue-600 hover:text-blue-700'}`}
               >
                 <span className="capitalize">{tab}</span>
                 {activeTab === tab && (
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gray-900"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
                 )}
               </button>
             ))}
@@ -163,7 +164,7 @@ const MediaPage = () => {
             <>
               {/* Featured Article */}
               <div className="mb-20">
-                <div className="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="relative overflow-hidden">
                       <img
@@ -173,18 +174,18 @@ const MediaPage = () => {
                       />
                     </div>
                     <div className="p-8 lg:p-12 flex flex-col justify-center">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-gray-600 transition-colors duration-200">
+                      <h2 className="text-3xl font-bold text-blue-900 mb-6 group-hover:text-blue-700 transition-colors duration-200">
                         {featuredArticle.title}
                       </h2>
-                      <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                      <p className="text-indigo-900 text-lg mb-8 leading-relaxed">
                         {featuredArticle.description}
                       </p>
                       <div className="flex items-center justify-between mt-auto">
-                        <span className="flex items-center text-sm text-gray-500">
+                        <span className="flex items-center text-sm text-blue-600">
                           <Calendar className="w-4 h-4 mr-2" />
                           {featuredArticle.date}
                         </span>
-                        <button className="text-gray-900 font-medium hover:text-gray-600 transition-colors duration-200 flex items-center">
+                        <button className="text-blue-700 font-medium hover:text-blue-900 transition-colors duration-200 flex items-center">
                           Read Full Article
                           <ArrowRight className="ml-2 w-4 h-4" />
                         </button>
@@ -197,9 +198,9 @@ const MediaPage = () => {
               {/* Regular Articles */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {articles.map((article) => (
-                  <div 
+                  <div
                     key={article.id}
-                    className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <img
@@ -209,18 +210,18 @@ const MediaPage = () => {
                       />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors duration-200">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-blue-700 transition-colors duration-200">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600 mb-6 line-clamp-2">
+                      <p className="text-indigo-800 mb-6 line-clamp-2">
                         {article.description}
                       </p>
                       <div className="flex items-center justify-between">
-                        <span className="flex items-center text-sm text-gray-500">
+                        <span className="flex items-center text-sm text-blue-600">
                           <Calendar className="w-4 h-4 mr-2" />
                           {article.date}
                         </span>
-                        <button className="text-gray-900 font-medium hover:text-gray-600 transition-colors duration-200 flex items-center">
+                        <button className="text-blue-700 font-medium hover:text-blue-900 transition-colors duration-200 flex items-center">
                           Read More
                           <ArrowRight className="ml-2 w-4 h-4" />
                         </button>
@@ -237,9 +238,9 @@ const MediaPage = () => {
             <>
               {/* Featured Video */}
               <div className="mb-20">
-                <div className="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div className="relative aspect-video bg-black">
+                    <div className="relative aspect-video bg-indigo-900">
                       <video
                         ref={el => videoRefs.current[featuredVideo.id] = el}
                         poster={featuredVideo.thumbnail}
@@ -249,27 +250,27 @@ const MediaPage = () => {
                         <source src={featuredVideo.videoUrl} type="video/mp4" />
                       </video>
                       {(!playingVideo || playingVideo !== featuredVideo.id) && (
-                        <div 
-                          className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 
+                        <div
+                          className="absolute inset-0 bg-indigo-900 bg-opacity-20 group-hover:bg-opacity-30
                           transition-all duration-300 flex items-center justify-center cursor-pointer"
                           onClick={() => handleVideoPlay(featuredVideo.id)}
                         >
-                          <PlayCircle className="w-20 h-20 text-white opacity-90 group-hover:opacity-100 
+                          <PlayCircle className="w-20 h-20 text-white opacity-90 group-hover:opacity-100
                             transform group-hover:scale-110 transition-all duration-300" />
                         </div>
                       )}
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-black bg-opacity-75 text-white rounded-md text-sm">
+                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-indigo-900 bg-opacity-75 text-white rounded-md text-sm">
                         {featuredVideo.duration}
                       </div>
                     </div>
                     <div className="p-8 lg:p-12 flex flex-col justify-center">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                      <h2 className="text-3xl font-bold text-blue-900 mb-6">
                         {featuredVideo.title}
                       </h2>
-                      <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                      <p className="text-indigo-900 text-lg mb-8 leading-relaxed">
                         {featuredVideo.description}
                       </p>
-                      <span className="flex items-center text-sm text-gray-500 mt-auto">
+                      <span className="flex items-center text-sm text-blue-600 mt-auto">
                         <Calendar className="w-4 h-4 mr-2" />
                         {featuredVideo.date}
                       </span>
@@ -281,11 +282,11 @@ const MediaPage = () => {
               {/* Regular Videos */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {videos.map((video) => (
-                  <div 
+                  <div
                     key={video.id}
-                    className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100"
                   >
-                    <div className="relative aspect-video bg-black">
+                    <div className="relative aspect-video bg-indigo-900">
                       <video
                         ref={el => videoRefs.current[video.id] = el}
                         poster={video.thumbnail}
@@ -295,27 +296,27 @@ const MediaPage = () => {
                         <source src={video.videoUrl} type="video/mp4" />
                       </video>
                       {(!playingVideo || playingVideo !== video.id) && (
-                        <div 
-                          className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 
+                        <div
+                          className="absolute inset-0 bg-indigo-900 bg-opacity-20 group-hover:bg-opacity-30
                           transition-all duration-300 flex items-center justify-center cursor-pointer"
                           onClick={() => handleVideoPlay(video.id)}
                         >
-                          <PlayCircle className="w-16 h-16 text-white opacity-90 group-hover:opacity-100 
+                          <PlayCircle className="w-16 h-16 text-white opacity-90 group-hover:opacity-100
                             transform group-hover:scale-110 transition-all duration-300" />
                         </div>
                       )}
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-black bg-opacity-75 text-white rounded-md text-sm">
+                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-indigo-900 bg-opacity-75 text-white rounded-md text-sm">
                         {video.duration}
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors duration-200">
+                      <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-blue-700 transition-colors duration-200">
                         {video.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 line-clamp-2">
+                      <p className="text-indigo-800 mb-4 line-clamp-2">
                         {video.description}
                       </p>
-                      <span className="flex items-center text-sm text-gray-500">
+                      <span className="flex items-center text-sm text-blue-600">
                         <Calendar className="w-4 h-4 mr-2" />
                         {video.date}
                       </span>

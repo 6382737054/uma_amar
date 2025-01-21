@@ -165,16 +165,16 @@ const BlogPage = () => {
     
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900">
+      <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Research Blog
             </h1>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-20 h-1 bg-gradient-to-r from-gray-600 to-gray-900 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Insights and perspectives on the latest developments in medical research 
               and healthcare innovation.
             </p>
@@ -189,9 +189,8 @@ const BlogPage = () => {
             {blogs.map((blog) => (
               <div
                 key={blog.id}
-                className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden 
-                  shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
-                  cursor-pointer border border-blue-100"
+                className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl 
+                  transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
                 onClick={() => setSelectedBlog(blog)}
               >
                 <div className="relative h-56 overflow-hidden">
@@ -202,11 +201,11 @@ const BlogPage = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-blue-700
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 
                     transition-colors duration-200">
                     {blog.title}
                   </h3>
-                  <p className="text-indigo-800 line-clamp-3">
+                  <p className="text-gray-600 line-clamp-3">
                     {blog.excerpt}
                   </p>
                 </div>
@@ -218,21 +217,17 @@ const BlogPage = () => {
 
       {/* Blog Modal */}
       {selectedBlog && (
-        <div 
-          className="fixed inset-0 bg-indigo-900 bg-opacity-50 backdrop-blur-sm z-50 
-            flex items-center justify-center p-4"
-        >
-          <div
-            className="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl w-full max-w-4xl 
-              max-h-[90vh] overflow-hidden relative shadow-2xl border border-blue-100"
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div 
+            className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedBlog(null)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-blue-50 hover:bg-blue-100
-                transition-colors duration-200 z-10 shadow-md hover:shadow-lg"
+              className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 
+                transition-colors duration-200 z-10"
             >
-              <X className="w-6 h-6 text-blue-900" />
+              <X className="w-6 h-6 text-gray-600" />
             </button>
 
             <div className="overflow-y-auto max-h-[90vh]">
@@ -242,17 +237,16 @@ const BlogPage = () => {
                   alt={selectedBlog.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
               </div>
 
               <div className="p-8">
-                <h2 className="text-3xl font-bold text-blue-900 mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   {selectedBlog.title}
                 </h2>
 
                 <div className="prose prose-lg max-w-none">
                   {selectedBlog.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="mb-4 text-indigo-900 leading-relaxed">
+                    <p key={index} className="mb-4 text-gray-600 leading-relaxed">
                       {paragraph}
                     </p>
                   ))}
