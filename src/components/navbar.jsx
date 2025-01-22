@@ -54,7 +54,7 @@ const Navbar = () => {
                 to="/" 
                 className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors duration-300"
               >
-                UMA AMAR
+                UMA MAHESHWARI
               </NavLink>
             </div>
 

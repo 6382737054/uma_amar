@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Award, BookOpen, Microscope, Brain } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, Apple, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
                 <div className="absolute inset-0 bg-blue-100 rounded-2xl transform rotate-3"></div>
                 <img
                   src="/Images/home.png"
-                  alt="Dr. Uma Amar"
+                  alt="P. Uma Maheswari"
                   className="relative w-full h-full object-cover rounded-2xl shadow-lg"
                 />
               </div>
@@ -27,23 +27,23 @@ const HomePage = () => {
               <div className="space-y-6">
                 <div>
                   <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-                    Dr. Uma Amar
+                    P. Uma Maheswari
                   </h1>
                   <p className="text-lg lg:text-xl font-medium text-blue-100 mt-3">
-                    Neuroscience Researcher & Healthcare Innovator
+                    Assistant Professor, Clinical Nutrition and Dietetics
                   </p>
                 </div>
                 
                 <p className="text-lg text-blue-50 leading-relaxed">
-                  Dedicated to advancing neurological research and patient care through innovative 
-                  approaches and evidence-based treatments. Leading groundbreaking studies in 
-                  cognitive science and neurological disorders.
+                  Dedicated nutrition educator with over 12 years of academic experience at SDNB Vaishnav College for Women. 
+                  Certified Diabetes Educator pursuing Ph.D. at Bharathiar University. Advocate for holistic nutrition 
+                  integrating diet, lifestyle, and mental health.
                 </p>
                 
                 <div className="flex flex-wrap gap-5 justify-center lg:justify-start">
-                  <Link to="/media">
+                  <Link to="/achievements">
                     <button className="inline-flex items-center px-8 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
-                      View Research
+                      View Achievements
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </button>
                   </Link>
@@ -59,67 +59,67 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Research Excellence Section */}
+      {/* Professional Excellence Section */}
       <section className="py-20 bg-gradient-to-b from-slate-100 to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Research Excellence</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Professional Excellence</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-900 mx-auto mt-6"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Research Area 1 */}
+            {/* Area 1 */}
             <div className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-slate-100">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
-                <Brain className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
+                <Apple className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-4">Neurological Research</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">Nutrition Education</h3>
               <p className="text-slate-600 leading-relaxed">
-                Pioneering research in neuroscience, focusing on understanding neural networks 
-                and developing innovative treatment approaches for neurological disorders.
+                Extensive experience in nutrition and dietetics education, with a focus on holistic 
+                approaches. Regular contributor to nutrition awareness through media and public speaking.
               </p>
             </div>
 
-            {/* Research Area 2 */}
+            {/* Area 2 */}
             <div className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-slate-100">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
-                <Microscope className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
+                <Award className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-4">Clinical Studies</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">Achievements</h3>
               <p className="text-slate-600 leading-relaxed">
-                Leading comprehensive clinical trials and research studies, advancing our 
-                understanding of treatment methodologies and patient care approaches.
+                Recipient of the Outstanding Service Award 2021 from Madras Library Association and 
+                Legendary Award from Rotary Club for contributions to education.
               </p>
             </div>
 
-            {/* Research Area 3 */}
+            {/* Area 3 */}
             <div className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-slate-100">
               <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
-                <BookOpen className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
+                <Heart className="h-7 w-7 text-blue-900 group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-4">Medical Education</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">Community Impact</h3>
               <p className="text-slate-600 leading-relaxed">
-                Contributing to medical knowledge through research publications, educational 
-                initiatives, and international collaborations in healthcare innovation.
+                Founded and hosts weekly book review meetings since 2020, fostering literary 
+                engagement across India with over 300 sessions conducted.
               </p>
             </div>
           </div>
 
-          {/* Research Focus */}
+          {/* Professional Focus */}
           <div className="mt-20 bg-gradient-to-br from-blue-50 to-white rounded-xl p-10 shadow-sm border border-slate-100">
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">Research Focus</h3>
+            <h3 className="text-2xl font-bold text-blue-900 mb-6">Professional Focus</h3>
             <div className="space-y-6 text-slate-700 leading-relaxed">
               <p>
-                With extensive experience in neurological research, our work focuses on 
-                understanding brain function and developing innovative treatment approaches. 
-                Our research combines cutting-edge technology with evidence-based methodologies 
-                to advance medical knowledge and improve patient outcomes.
+                With a strong foundation in Clinical Nutrition and Dietetics, P. Uma Maheswari promotes 
+                the philosophy of "Think Global and Eat Local." Her approach combines traditional wisdom 
+                with modern nutritional science, emphasizing the importance of holistic wellness through 
+                diet, lifestyle modifications, and mental health.
               </p>
               <p>
-                Through international collaborations and continuous research initiatives, 
-                we're committed to expanding the boundaries of medical science and developing 
-                new approaches to treating neurological conditions. Our dedication to research 
-                excellence drives breakthrough discoveries in patient care.
+                As a Certified Diabetes Educator and experienced academic professional, she has made 
+                significant contributions through media appearances, including daily nutrition awareness 
+                sessions on Makkal Television, and through community outreach programs such as the 
+                gender sensitization programme for the Erode District Police.
               </p>
             </div>
           </div>

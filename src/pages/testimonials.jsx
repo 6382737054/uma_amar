@@ -43,13 +43,14 @@ const TestimonialsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
       {/* Header Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-900 to-slate-900">
+      <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Client Testimonials
           </h1>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
             Hear from industry leaders about their experiences and the impact 
             of our collaborative partnerships.
@@ -60,22 +61,22 @@ const TestimonialsPage = () => {
       {/* Featured Testimonial Section */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative bg-white rounded-2xl shadow-lg p-8 lg:p-12 border border-slate-100">
+          <div className="relative bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl shadow-xl p-8 lg:p-12 border border-blue-100">
             {/* Background Decoration */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-blue-50 rounded-tl-2xl rounded-br-2xl -z-10"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-50 rounded-tr-2xl rounded-bl-2xl -z-10"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-tl-2xl rounded-br-2xl -z-10"></div>
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-tr-2xl rounded-bl-2xl -z-10"></div>
             
             <div className="relative">
               {/* Quote Icon */}
               <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-900 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-24 h-24 bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
                   <Quote className="w-12 h-12 text-white transform rotate-180" />
                 </div>
               </div>
 
               {/* Testimonial Content */}
               <div className="pt-16 flex flex-col items-center">
-                <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-4 border-blue-100 shadow-md">
+                <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-4 border-indigo-100 shadow-xl">
                   <img
                     src={testimonials[activeTestimonial].image}
                     alt={testimonials[activeTestimonial].name}
@@ -85,33 +86,33 @@ const TestimonialsPage = () => {
 
                 <div className="flex gap-1 mb-6">
                   {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-blue-500 fill-current" />
+                    <Star key={i} className="w-6 h-6 text-indigo-500 fill-current" />
                   ))}
                 </div>
 
-                <blockquote className="text-xl lg:text-2xl text-slate-700 text-center mb-8 italic">
+                <blockquote className="text-xl lg:text-2xl text-indigo-950 text-center mb-8 italic">
                   "{testimonials[activeTestimonial].quote}"
                 </blockquote>
 
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold text-blue-900">{testimonials[activeTestimonial].name}</h3>
-                  <p className="text-slate-600">{testimonials[activeTestimonial].position}</p>
-                  <p className="text-slate-500">{testimonials[activeTestimonial].company}</p>
+                  <h3 className="text-xl font-semibold text-indigo-900">{testimonials[activeTestimonial].name}</h3>
+                  <p className="text-indigo-700">{testimonials[activeTestimonial].position}</p>
+                  <p className="text-indigo-600">{testimonials[activeTestimonial].company}</p>
                 </div>
 
                 {/* Navigation Buttons */}
                 <div className="flex gap-4 mt-12">
                   <button
                     onClick={handlePrev}
-                    className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+                    className="p-3 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 hover:from-indigo-200 hover:to-purple-200 transition-all duration-200 shadow-md hover:shadow-lg"
                   >
-                    <ChevronLeft className="w-6 h-6 text-blue-900" />
+                    <ChevronLeft className="w-6 h-6 text-indigo-900" />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+                    className="p-3 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 hover:from-purple-200 hover:to-indigo-200 transition-all duration-200 shadow-md hover:shadow-lg"
                   >
-                    <ChevronRight className="w-6 h-6 text-blue-900" />
+                    <ChevronRight className="w-6 h-6 text-indigo-900" />
                   </button>
                 </div>
               </div>
@@ -121,34 +122,34 @@ const TestimonialsPage = () => {
       </section>
 
       {/* Testimonial Grid Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-slate-50">
+      <section className="py-20 bg-gradient-to-br from-indigo-100 via-purple-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100"
+                className="bg-white bg-opacity-70 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100"
               >
                 <div className="flex items-start mb-6">
                   <div className="flex-shrink-0">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-blue-100"
+                      className="w-16 h-16 rounded-full object-cover border-2 border-indigo-200 shadow-md"
                     />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold text-blue-900">{testimonial.name}</h3>
-                    <p className="text-slate-600">{testimonial.position}</p>
-                    <p className="text-slate-500 text-sm">{testimonial.company}</p>
+                    <h3 className="text-lg font-semibold text-indigo-900">{testimonial.name}</h3>
+                    <p className="text-indigo-700">{testimonial.position}</p>
+                    <p className="text-indigo-600 text-sm">{testimonial.company}</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
+                    <Star key={i} className="w-4 h-4 text-indigo-500 fill-current" />
                   ))}
                 </div>
-                <p className="text-slate-600">{testimonial.quote}</p>
+                <p className="text-indigo-800">{testimonial.quote}</p>
               </div>
             ))}
           </div>
