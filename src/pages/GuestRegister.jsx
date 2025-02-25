@@ -398,7 +398,7 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
             <div className="bg-white shadow overflow-hidden sm:rounded-lg">
               <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
                 <h3 className="text-lg leading-6 font-medium text-white">
-                  {formData.category === 'family' ? 'Family Head Information' : 'Primary Guest Information'}
+                  {formData.category === 'family' ? 'Personal Information' : 'Primary Guest Information'}
                 </h3>
               </div>
               <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
@@ -488,19 +488,7 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
 
                     />
                   </div>
-{/* Room Number */}
-<div className="col-span-6 sm:col-span-2">
-  <label htmlFor="roomNumber" className="block text-sm font-medium text-gray-700">Room Number</label>
-  <input
-    type="text"
-    name="roomNumber"
-    id="roomNumber"
-    value={primaryGuest.roomNumber}
-    onChange={handlePrimaryGuestChange}
-    className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  border border-gray-300 rounded-md ${errors.roomNumber ? 'border-red-300' : ''}`}
-  />
-  {errors.roomNumber && <p className="mt-2 text-sm text-red-600">{errors.roomNumber}</p>}
-</div>
+
 
 {/* City */}
 <div className="col-span-6 sm:col-span-2">
@@ -679,60 +667,72 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
               </div>
             )}
 
-            {/* Stay Information */}
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-              <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
-                <h3 className="text-lg leading-6 font-medium text-white">Stay Information</h3>
-              </div>
-              <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
-                <div className="grid grid-cols-6 gap-6">
-  
+{/* Stay Information */}
+<div className="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <h3 className="text-lg leading-6 font-medium text-white">Stay Information</h3>
+  </div>
+  <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
+    <div className="grid grid-cols-6 gap-6">
+      {/* Room Number - Moved from Primary Guest Information */}
+      <div className="col-span-6 sm:col-span-3">
+        <label htmlFor="roomNumber" className="block text-sm font-medium text-gray-700">Room Number</label>
+        <input
+          type="text"
+          name="roomNumber"
+          id="roomNumber"
+          value={formData.roomNumber}
+          onChange={handleFormDataChange}
+          className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.roomNumber ? 'border-red-300' : ''}`}
+        />
+        {errors.roomNumber && <p className="mt-2 text-sm text-red-600">{errors.roomNumber}</p>}
+      </div>
 
-                  {/* Check-in Date */}
-                  <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="checkInDate" className="block text-sm font-medium text-gray-700">Check-in Date</label>
-                    <input
-                      type="date"
-                      name="checkInDate"
-                      id="checkInDate"
-                      value={formData.checkInDate}
-                      onChange={handleFormDataChange}
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
+      {/* Check-in Date */}
+      <div className="col-span-6 sm:col-span-3">
+        <label htmlFor="checkInDate" className="block text-sm font-medium text-gray-700">Check-in Date</label>
+        <input
+          type="date"
+          name="checkInDate"
+          id="checkInDate"
+          value={formData.checkInDate}
+          onChange={handleFormDataChange}
+          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+        />
+      </div>
 
-                  {/* Check-out Date */}
-                  <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="checkOutDate" className="block text-sm font-medium text-gray-700">Check-out Date</label>
-                    <input
-                      type="date"
-                      name="checkOutDate"
-                      id="checkOutDate"
-                      value={formData.checkOutDate}
-                      onChange={handleFormDataChange}
-                      className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md ${errors.checkOutDate ? 'border-red-300' : ''}`}
-                    />
-                    {errors.checkOutDate && <p className="mt-2 text-sm text-red-600">{errors.checkOutDate}</p>}
-                  </div>
+      {/* Check-out Date */}
+      <div className="col-span-6 sm:col-span-3">
+        <label htmlFor="checkOutDate" className="block text-sm font-medium text-gray-700">Check-out Date</label>
+        <input
+          type="date"
+          name="checkOutDate"
+          id="checkOutDate"
+          value={formData.checkOutDate}
+          onChange={handleFormDataChange}
+          className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md ${errors.checkOutDate ? 'border-red-300' : ''}`}
+        />
+        {errors.checkOutDate && <p className="mt-2 text-sm text-red-600">{errors.checkOutDate}</p>}
+      </div>
 
-                  {/* Purpose of Visit */}
-                  <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="purpose" className="block text-sm font-medium text-gray-700">Purpose of Visit</label>
-                    <select
-                      id="purpose"
-                      name="purpose"
-                      value={formData.purpose}
-                      onChange={handleFormDataChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      {purposeOptions.map(purpose => (
-                        <option key={purpose} value={purpose}>{purpose}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Purpose of Visit */}
+      <div className="col-span-6 sm:col-span-3">
+        <label htmlFor="purpose" className="block text-sm font-medium text-gray-700">Purpose of Visit</label>
+        <select
+          id="purpose"
+          name="purpose"
+          value={formData.purpose}
+          onChange={handleFormDataChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          {purposeOptions.map(purpose => (
+            <option key={purpose} value={purpose}>{purpose}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
 
             {/* Submit Buttons */}
             <div className="flex justify-end space-x-3">
