@@ -74,7 +74,7 @@ function App() {
         />
         
         <Route            
-          path="/view-submissions"            
+          path="/submissions"            
           element={             
             <ProtectedRoute allowedUserType="hotel">               
               <ViewSubmissions />             
