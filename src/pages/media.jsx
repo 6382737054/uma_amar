@@ -1,105 +1,42 @@
 import React, { useState, useRef } from 'react';
-import { PlayCircle, Calendar, ArrowRight } from 'lucide-react';
+import { PlayCircle } from 'lucide-react';
 
 const MediaPage = () => {
-  const [activeTab, setActiveTab] = useState('articles');
+  const [activeTab, setActiveTab] = useState('images');
   const [playingVideo, setPlayingVideo] = useState(null);
   const videoRefs = useRef({});
 
-  // Content definitions remain the same
-  const featuredArticle = {
-    id: 'featured',
-    title: "Breakthrough in Medical Research: A New Era in Healthcare",
-    image: "/Images/featured.png",
-    date: "January 20, 2024",
-    description: "Exploring groundbreaking discoveries that are revolutionizing the healthcare industry and transforming patient care worldwide. This comprehensive study reveals new approaches to treatment methodologies."
-  };
-
-  const articles = [
-    {
-      id: 1,
-      title: "Understanding Neural Networks and Brain Function",
-      image: "/Images/research.png",
-      date: "January 15, 2024",
-      description: "An in-depth look at how recent advances in medical research are transforming our understanding of neural networks and brain function."
-    },
-    {
-      id: 2,
-      title: "Breaking New Ground in Neurological Treatment",
-      image: "/Images/research.png",
-      date: "January 10, 2024",
-      description: "Exploring innovative approaches in treating complex neurological conditions with breakthrough methodologies."
-    },
-    {
-      id: 3,
-      title: "The Future of Personalized Medicine",
-      image: "/Images/research.png",
-      date: "January 5, 2024",
-      description: "Discussing how personalized medicine is shaping the future of healthcare delivery and patient treatment."
-    },
-    {
-      id: 4,
-      title: "Advancements in Clinical Research",
-      image: "/Images/research.png",
-      date: "January 3, 2024",
-      description: "Examining the latest developments in clinical research and their impact on modern medical practices."
-    }
+  const images = [
+    '/Images/media/img1.png',
+    '/Images/media/img2.jpg',
+    '/Images/media/img3.jpg',
+    '/Images/media/img4.jpg',
+    '/Images/media/img5.jpg',
+    '/Images/media/img6.jpg',
+    '/Images/media/img7.jpg',
+    '/Images/media/img8.jpg',
+    '/Images/media/img9.jpg',
+    '/Images/media/img10.jpg',
+    '/Images/media/img11.jpg',
+    '/Images/media/img12.jpg',
+    '/Images/media/img13.jpg',
+    '/Images/media/img14.jpg'
   ];
-
-
-  const featuredVideo = {
-    id: 'featured-video',
-    title: "Revolutionizing Healthcare Through Innovation",
-    thumbnail: "/Images/featured-video.png",
-    videoUrl: "/Images/testvid.mp4",
-    duration: "18:30",
-    date: "January 2024",
-    description: "A comprehensive overview of groundbreaking medical innovations and their impact on modern healthcare practices."
-  };
-
 
   const videos = [
     {
-      id: 1,
-      title: "Understanding Modern Healthcare Approaches",
-      thumbnail: "/Images/video1.png",
-      videoUrl: "/Images/testvid.mp4",
-      duration: "12:45",
-      date: "January 2024",
-      description: "A comprehensive overview of modern healthcare methodologies and their impact on patient care."
+      id: 'video1',
+      thumbnail: '/Images/Videos/thump1.jpg',
+      videoUrl: '/Images/Videos/video1.mp4'
     },
     {
-      id: 2,
-      title: "Advances in Medical Research",
-      thumbnail: "/Images/video2.png",
-      videoUrl: "/Images/testvid.mp4",
-      duration: "15:30",
-      date: "December 2023",
-      description: "Exploring the latest breakthroughs in medical research and their practical applications."
-    },
-    {
-      id: 3,
-      title: "Patient Care Excellence",
-      thumbnail: "/Images/video3.png",
-      videoUrl: "/Images/testvid.mp4",
-      duration: "10:15",
-      date: "December 2023",
-      description: "Demonstrating best practices in patient care and treatment procedures."
-    },
-    {
-      id: 4,
-      title: "The Future of Healthcare Technology",
-      thumbnail: "/Images/video4.png",
-      videoUrl: "/Images/testvid.mp4",
-      duration: "14:20",
-      date: "December 2023",
-      description: "Exploring upcoming technological innovations in healthcare and medical treatment."
+      id: 'video2', 
+      thumbnail: '/Images/videos/thump2.jpg',
+      videoUrl: '/Images/videos/video2.mp4'
     }
   ];
 
-
   const handleVideoPlay = (videoId) => {
-    // Video handling logic remains the same
     Object.values(videoRefs.current).forEach(videoRef => {
       if (videoRef && videoRef !== videoRefs.current[videoId]) {
         videoRef.pause();
@@ -119,31 +56,23 @@ const MediaPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
-      {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Media Center
-            </h1>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-              Stay informed with our latest research findings, medical breakthroughs, 
-              and healthcare innovations.
-            </p>
+            <h1 className="text-5xl font-bold text-white mb-6">Gallery</h1>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
           </div>
         </div>
       </section>
 
-      {/* Content Navigation */}
       <section className="border-b border-blue-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-12">
-            {['articles', 'videos'].map((tab) => (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex justify-center space-x-16">
+            {['images', 'videos'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`py-4 px-2 relative font-medium text-lg transition-colors duration-200
+                className={`py-6 px-4 relative font-medium text-xl transition-colors duration-200 
                   ${activeTab === tab ? 'text-blue-900' : 'text-blue-600 hover:text-blue-700'}`}
               >
                 <span className="capitalize">{tab}</span>
@@ -156,175 +85,59 @@ const MediaPage = () => {
         </div>
       </section>
 
-      {/* Content Section */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Articles */}
-          {activeTab === 'articles' && (
-            <>
-              {/* Featured Article */}
-              <div className="mb-20">
-                <div className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={featuredArticle.image}
-                        alt={featuredArticle.title}
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-8 lg:p-12 flex flex-col justify-center">
-                      <h2 className="text-3xl font-bold text-blue-900 mb-6 group-hover:text-blue-700 transition-colors duration-200">
-                        {featuredArticle.title}
-                      </h2>
-                      <p className="text-indigo-900 text-lg mb-8 leading-relaxed">
-                        {featuredArticle.description}
-                      </p>
-                      <div className="flex items-center justify-between mt-auto">
-                        <span className="flex items-center text-sm text-blue-600">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          {featuredArticle.date}
-                        </span>
-                        <button className="text-blue-700 font-medium hover:text-blue-900 transition-colors duration-200 flex items-center">
-                          Read Full Article
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {activeTab === 'images' && (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl 
+                    transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <img
+                      src={image}
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                 </div>
-              </div>
-
-              {/* Regular Articles */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {articles.map((article) => (
-                  <div
-                    key={article.id}
-                    className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100"
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-blue-700 transition-colors duration-200">
-                        {article.title}
-                      </h3>
-                      <p className="text-indigo-800 mb-6 line-clamp-2">
-                        {article.description}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span className="flex items-center text-sm text-blue-600">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          {article.date}
-                        </span>
-                        <button className="text-blue-700 font-medium hover:text-blue-900 transition-colors duration-200 flex items-center">
-                          Read More
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
+              ))}
+            </div>
           )}
 
-          {/* Videos */}
           {activeTab === 'videos' && (
-            <>
-              {/* Featured Video */}
-              <div className="mb-20">
-                <div className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="relative aspect-video bg-indigo-900">
-                      <video
-                        ref={el => videoRefs.current[featuredVideo.id] = el}
-                        poster={featuredVideo.thumbnail}
-                        className="w-full h-full object-cover"
-                        onClick={() => handleVideoPlay(featuredVideo.id)}
-                      >
-                        <source src={featuredVideo.videoUrl} type="video/mp4" />
-                      </video>
-                      {(!playingVideo || playingVideo !== featuredVideo.id) && (
-                        <div
-                          className="absolute inset-0 bg-indigo-900 bg-opacity-20 group-hover:bg-opacity-30
-                          transition-all duration-300 flex items-center justify-center cursor-pointer"
-                          onClick={() => handleVideoPlay(featuredVideo.id)}
-                        >
-                          <PlayCircle className="w-20 h-20 text-white opacity-90 group-hover:opacity-100
-                            transform group-hover:scale-110 transition-all duration-300" />
-                        </div>
-                      )}
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-indigo-900 bg-opacity-75 text-white rounded-md text-sm">
-                        {featuredVideo.duration}
-                      </div>
-                    </div>
-                    <div className="p-8 lg:p-12 flex flex-col justify-center">
-                      <h2 className="text-3xl font-bold text-blue-900 mb-6">
-                        {featuredVideo.title}
-                      </h2>
-                      <p className="text-indigo-900 text-lg mb-8 leading-relaxed">
-                        {featuredVideo.description}
-                      </p>
-                      <span className="flex items-center text-sm text-blue-600 mt-auto">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        {featuredVideo.date}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Regular Videos */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {videos.map((video) => (
-                  <div
-                    key={video.id}
-                    className="group bg-white bg-opacity-70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100"
-                  >
-                    <div className="relative aspect-video bg-indigo-900">
-                      <video
-                        ref={el => videoRefs.current[video.id] = el}
-                        poster={video.thumbnail}
-                        className="w-full h-full object-cover"
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {videos.map((video) => (
+                <div
+                  key={video.id}
+                  className="group bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl 
+                    transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="relative aspect-video bg-indigo-900">
+                    <video
+                      ref={el => videoRefs.current[video.id] = el}
+                      poster={video.thumbnail}
+                      className="w-full h-full object-cover"
+                      onClick={() => handleVideoPlay(video.id)}
+                    >
+                      <source src={video.videoUrl} type="video/mp4" />
+                    </video>
+                    {(!playingVideo || playingVideo !== video.id) && (
+                      <div
+                        className="absolute inset-0 bg-indigo-900 bg-opacity-20 group-hover:bg-opacity-30
+                        transition-all duration-300 flex items-center justify-center cursor-pointer"
                         onClick={() => handleVideoPlay(video.id)}
                       >
-                        <source src={video.videoUrl} type="video/mp4" />
-                      </video>
-                      {(!playingVideo || playingVideo !== video.id) && (
-                        <div
-                          className="absolute inset-0 bg-indigo-900 bg-opacity-20 group-hover:bg-opacity-30
-                          transition-all duration-300 flex items-center justify-center cursor-pointer"
-                          onClick={() => handleVideoPlay(video.id)}
-                        >
-                          <PlayCircle className="w-16 h-16 text-white opacity-90 group-hover:opacity-100
-                            transform group-hover:scale-110 transition-all duration-300" />
-                        </div>
-                      )}
-                      <div className="absolute bottom-4 right-4 px-3 py-1 bg-indigo-900 bg-opacity-75 text-white rounded-md text-sm">
-                        {video.duration}
+                        <PlayCircle className="w-20 h-20 text-white opacity-90 group-hover:opacity-100
+                          transform group-hover:scale-110 transition-all duration-300" />
                       </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-blue-700 transition-colors duration-200">
-                        {video.title}
-                      </h3>
-                      <p className="text-indigo-800 mb-4 line-clamp-2">
-                        {video.description}
-                      </p>
-                      <span className="flex items-center text-sm text-blue-600">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        {video.date}
-                      </span>
-                    </div>
+                    )}
                   </div>
-                ))}
-              </div>
-            </>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </section>
