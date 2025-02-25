@@ -21,12 +21,13 @@ const RegisterGuest = () => {
     title: 'Mr.',
     name: '',
     gender: 'Male',
+    dob: '', // Add this line
     mobile: '',
     address: '',
-    city: '',           // Add city
-    state: '',          // Add state
-    nationality: '',    // Add nationality
-    roomNumber: '',     // Add room number
+    city: '',
+    state: '',
+    nationality: '',
+    roomNumber: '',
     idType: 'Aadhar card',
     idNumber: '',
     idCardFile: null,
@@ -85,6 +86,7 @@ const RegisterGuest = () => {
             newGuests.push({
               name: '',
               mobile: '',
+              dob: '', // Add this line
               idType: 'Aadhar card',
               idNumber: '',
               idCardFile: null,
@@ -360,18 +362,19 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
                   <div className="col-span-6 sm:col-span-3">
                     <label className="block text-sm font-medium text-gray-700">Category</label>
                     <select
-                      id="category"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleFormDataChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="family">Family</option>
-                      <option value="bachelor">Bachelor</option>
-                    </select>
+  id="category"
+  name="category"
+  value={formData.category}
+  onChange={handleFormDataChange}
+  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+>
+  <option value="family">Family</option>
+  <option value="group">Group</option>
+  <option value="solo">Solo</option>
+</select>
                   </div>
 
-                  {formData.category === 'bachelor' && (
+                  {formData.category === 'group' && (
                     <div className="col-span-6 sm:col-span-3">
                       <label className="block text-sm font-medium text-gray-700">Number of Bachelors</label>
                       <select
@@ -445,7 +448,18 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
                       <option value="Other">Other</option>
                     </select>
                   </div>
-
+{/* Date of Birth */}
+<div className="col-span-6 sm:col-span-2">
+  <label htmlFor="dob" className="block text-sm font-medium text-gray-700">Date of Birth</label>
+  <input
+    type="date"
+    name="dob"
+    id="dob"
+    value={primaryGuest.dob}
+    onChange={handlePrimaryGuestChange}
+    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+  />
+</div>
                   {/* Mobile */}
                   <div className="col-span-6 sm:col-span-2">
                     <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">Mobile Number</label>
@@ -573,7 +587,7 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
             </div>
 
             {/* Additional Bachelor Guests */}
-            {formData.category === 'bachelor' && formData.bachelorCount > 1 && (
+            {formData.category === 'group' && formData.bachelorCount > 1 && (
               <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
                   <h3 className="text-lg leading-6 font-medium text-white">Additional Guests Information</h3>
@@ -596,7 +610,16 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
                             <p className="mt-2 text-sm text-red-600">{errors[`additionalGuest${index}name`]}</p>
                           )}
                         </div>
-
+{/* Date of Birth */}
+<div className="col-span-6 sm:col-span-3">
+  <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+  <input
+    type="date"
+    value={guest.dob}
+    onChange={(e) => handleAdditionalGuestChange(index, 'dob', e.target.value)}
+    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+  />
+</div>
                         {/* Mobile */}
                         <div className="col-span-6 sm:col-span-3">
                           <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
