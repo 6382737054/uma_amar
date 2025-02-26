@@ -69,9 +69,9 @@ const LoginPage = () => {
         <div className="absolute bottom-20 right-20 w-28 h-28 bg-indigo-100 rounded-full opacity-20 blur-2xl"></div>
       </div>
 
-      <div className="w-full max-w-5xl h-[600px] bg-white rounded-2xl shadow-xl flex overflow-hidden relative z-10">
+      <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl flex flex-col lg:flex-row overflow-hidden relative z-10 m-4 lg:m-0 lg:h-[600px]">
         {/* Left side - Image and Info */}
-        <div className="w-1/2 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-purple-600 to-blue-700 text-white relative">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-8 bg-gradient-to-br from-purple-600 to-blue-700 text-white relative">
           <div className="absolute top-0 left-0 w-full p-6">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <Shield className="w-6 h-6" /> 
@@ -106,14 +106,14 @@ const LoginPage = () => {
         </div>
 
         {/* Right side - Login Form */}
-        <div className="w-1/2 flex items-center justify-center px-12">
+        <div className="w-full lg:w-1/2 flex items-center justify-center px-6 lg:px-12 py-8 lg:py-0">
           <div className="w-full max-w-md space-y-8">
             <div className="text-center">
               <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
               <p className="mt-3 text-gray-600">Please sign in to continue</p>
             </div>
 
-            <form onSubmit={handleLogin} className="mt-8 space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
               {errorMessage && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
                   <span className="block text-sm">{errorMessage}</span>
