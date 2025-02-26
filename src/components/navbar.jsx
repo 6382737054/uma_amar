@@ -31,9 +31,8 @@ const Navbar = () => {
     } else if (userType === 'police') {
       return [
         { name: 'Dashboard', path: '/police-dashboard' },
-        { name: 'Search Records', path: '/search-records' },
-        { name: 'Alerts', path: '/alerts' },
-        { name: 'Analytics', path: '/analytics' }
+        { name: 'Search Records', path: '/records' },
+     
       ];
     }
     return [];

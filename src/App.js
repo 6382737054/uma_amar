@@ -7,6 +7,7 @@ import RegisterGuest from './pages/GuestRegister';
 import ViewSubmissions from './pages/submission';
 import Reports from './pages/reports';
 import Navbar from './components/navbar';  
+import SearchRecords from './pages/searchrecords';
 
 // Layout with Navbar for authenticated users 
 const AuthenticatedLayout = ({ children }) => {   
@@ -91,6 +92,7 @@ function App() {
           }          
         />
         
+        
         {/* Protected Police routes */}
         <Route            
           path="/police-dashboard"            
@@ -99,7 +101,15 @@ function App() {
               <PoliceDashboard />             
             </ProtectedRoute>           
           }          
-        />                  
+        />          
+                <Route            
+          path="/records"            
+          element={             
+            <ProtectedRoute allowedUserType="police">               
+              <SearchRecords />             
+            </ProtectedRoute>           
+          }          
+        />        
         
         {/* Redirect root to login */}         
         <Route path="/" element={<Navigate to="/login" replace />} />                  

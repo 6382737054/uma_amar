@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+// Add this at the top of your RegisterGuest.js file
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Shield, Hotel, Users, Lock, Calendar, MapPin, CreditCard, User } from 'lucide-react';
 
 const RegisterGuest = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   // Main form data state
   const [formData, setFormData] = useState({
@@ -310,79 +311,75 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
     </div>
   );
 
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Register New Guest</h1>
-          <p className="mt-1 text-sm text-gray-500">
-            Add a new guest to the system for police verification.
-          </p>
-        </div>
-        
-        {submitSuccess ? (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-green-700">
-                  Guest registration successful! Redirecting to dashboard...
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {errors.form && (
-              <div className="bg-red-50 border-l-4 border-red-400 p-4">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm text-red-700">{errors.form}</p>
-                  </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
+        {/* Header */}
+        <div className="border-b border-gray-200">
+          <div className="px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="p-2 bg-indigo-50 rounded-lg">
+                  <Users className="w-6 h-6 text-indigo-600" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">Register New Guest</h1>
+                  <p className="mt-1 text-gray-500">Add a new guest to the system for police verification</p>
                 </div>
               </div>
-            )}
-
-            {/* Booking Category Section */}
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-              <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
-                <h3 className="text-lg leading-6 font-medium text-white">Booking Category</h3>
+              <span className="text-sm text-gray-500">* Required fields</span>
+            </div>
+          </div>
+        </div>
+  
+        {/* Form Content */}
+        <div className="px-8 py-6">
+          {submitSuccess ? (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm text-green-800">Guest registration successful! Redirecting to dashboard...</p>
+                </div>
               </div>
-              <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
-                <div className="grid grid-cols-6 gap-6">
-                  <div className="col-span-6 sm:col-span-3">
-                    <label className="block text-sm font-medium text-gray-700">Category</label>
-                    <select
-  id="category"
-  name="category"
-  value={formData.category}
-  onChange={handleFormDataChange}
-  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
->
-  <option value="family">Family</option>
-  <option value="group">Group</option>
-  <option value="solo">Solo</option>
-</select>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Booking Details */}
+              <div className="bg-white rounded-lg border border-gray-200">
+                <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                  <div className="flex items-center space-x-3">
+                    <Hotel className="w-5 h-5 text-indigo-600" />
+                    <h3 className="text-lg font-medium text-gray-900">Booking Details</h3>
                   </div>
-
+                </div>
+                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                    <select
+                      name="category"
+                      value={formData.category}
+                      onChange={handleFormDataChange}
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    >
+                      <option value="family">Family</option>
+                      <option value="group">Group</option>
+                      <option value="solo">Solo</option>
+                    </select>
+                  </div>
                   {formData.category === 'group' && (
-                    <div className="col-span-6 sm:col-span-3">
-                      <label className="block text-sm font-medium text-gray-700">Number of Bachelors</label>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Number of People *</label>
                       <select
-                        id="bachelorCount"
                         name="bachelorCount"
                         value={formData.bachelorCount}
                         onChange={handleFormDataChange}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                       >
                         {[1, 2, 3, 4].map(num => (
                           <option key={num} value={num}>{num} {num === 1 ? 'Person' : 'People'}</option>
@@ -392,370 +389,227 @@ if (!primaryGuest.nationality.trim()) newErrors.nationality = 'Nationality is re
                   )}
                 </div>
               </div>
-            </div>
-
-            {/* Primary Guest Information */}
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-              <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
-                <h3 className="text-lg leading-6 font-medium text-white">
-                  {formData.category === 'family' ? 'Personal Information' : 'Primary Guest Information'}
-                </h3>
-              </div>
-              <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
-                <div className="grid grid-cols-6 gap-6">
-                  {/* Title */}
-                  <div className="col-span-6 sm:col-span-1">
-                    <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-                    <select
-                      id="title"
-                      name="title"
-                      value={primaryGuest.title}
-                      onChange={handlePrimaryGuestChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      {titleOptions.map(title => (
-                        <option key={title} value={title}>{title}</option>
-                      ))}
-                    </select>
+  
+              {/* Primary Guest Information */}
+              <div className="bg-white rounded-lg border border-gray-200">
+                <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                  <div className="flex items-center space-x-3">
+                    <User className="w-5 h-5 text-indigo-600" />
+                    <h3 className="text-lg font-medium text-gray-900">Personal Information</h3>
                   </div>
-
-                  {/* Name */}
-                  <div className="col-span-6 sm:col-span-5">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      value={primaryGuest.name}
-                      onChange={handlePrimaryGuestChange}
-                      className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.name ? 'border-red-300' : ''}`}
-                    />
-                    {errors.name && <p className="mt-2 text-sm text-red-600">{errors.name}</p>}
+                </div>
+                <div className="p-6 space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                      <select
+                        name="title"
+                        value={primaryGuest.title}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      >
+                        {titleOptions.map(title => (
+                          <option key={title} value={title}>{title}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={primaryGuest.name}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
                   </div>
-
-                  {/* Gender */}
-                  <div className="col-span-6 sm:col-span-2">
-                    <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
-                    <select
-                      id="gender"
-                      name="gender"
-                      value={primaryGuest.gender}
-                      onChange={handlePrimaryGuestChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
+  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Gender *</label>
+                      <select
+                        name="gender"
+                        value={primaryGuest.gender}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth *</label>
+                      <input
+                        type="date"
+                        name="dob"
+                        value={primaryGuest.dob}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number *</label>
+                      <input
+                        type="tel"
+                        name="mobile"
+                        value={primaryGuest.mobile}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
                   </div>
-{/* Date of Birth */}
-<div className="col-span-6 sm:col-span-2">
-  <label htmlFor="dob" className="block text-sm font-medium text-gray-700">Date of Birth</label>
-  <input
-    type="date"
-    name="dob"
-    id="dob"
-    value={primaryGuest.dob}
-    onChange={handlePrimaryGuestChange}
-    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-  />
-</div>
-                  {/* Mobile */}
-                  <div className="col-span-6 sm:col-span-2">
-                    <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">Mobile Number</label>
-                    <input
-                      type="text"
-                      name="mobile"
-                      id="mobile"
-                      value={primaryGuest.mobile}
-                      onChange={handlePrimaryGuestChange}
-                      className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.mobile ? 'border-red-300' : ''}`}
-                    />
-                    {errors.mobile && <p className="mt-2 text-sm text-red-600">{errors.mobile}</p>}
+  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">ID Type *</label>
+                      <select
+                        name="idType"
+                        value={primaryGuest.idType}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      >
+                        {idTypeOptions.map(type => (
+                          <option key={type} value={type}>{type}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">ID Number *</label>
+                      <input
+                        type="text"
+                        name="idNumber"
+                        value={primaryGuest.idNumber}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
                   </div>
-
-                  {/* Address */}
-                  <div className="col-span-6">
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
+  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Address *</label>
                     <textarea
-                      id="address"
                       name="address"
                       rows={3}
                       value={primaryGuest.address}
                       onChange={handlePrimaryGuestChange}
-                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-                    
-
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     />
                   </div>
-
-
-{/* City */}
-<div className="col-span-6 sm:col-span-2">
-  <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
-  <input
-    type="text"
-    name="city"
-    id="city"
-    value={primaryGuest.city}
-    onChange={handlePrimaryGuestChange}
-    className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.city ? 'border-red-300' : ''}`}
-  />
-  {errors.city && <p className="mt-2 text-sm text-red-600">{errors.city}</p>}
-</div>
-
-{/* State */}
-<div className="col-span-6 sm:col-span-2">
-  <label htmlFor="state" className="block text-sm font-medium text-gray-700">State</label>
-  <input
-    type="text"
-    name="state"
-    id="state"
-    value={primaryGuest.state}
-    onChange={handlePrimaryGuestChange}
-    className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.state ? 'border-red-300' : ''}`}
-  />
-  {errors.state && <p className="mt-2 text-sm text-red-600">{errors.state}</p>}
-</div>
-
-{/* Nationality */}
-<div className="col-span-6 sm:col-span-2">
-  <label htmlFor="nationality" className="block text-sm font-medium text-gray-700">Nationality</label>
-  <input
-    type="text"
-    name="nationality"
-    id="nationality"
-    value={primaryGuest.nationality}
-    onChange={handlePrimaryGuestChange}
-    className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.nationality ? 'border-red-300' : ''}`}
-  />
-  {errors.nationality && <p className="mt-2 text-sm text-red-600">{errors.nationality}</p>}
-</div>
-                  {/* ID Type */}
-                  <div className="col-span-6 sm:col-span-2">
-                    <label htmlFor="idType" className="block text-sm font-medium text-gray-700">ID Type</label>
+  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={primaryGuest.city}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">State *</label>
+                      <input
+                        type="text"
+                        name="state"
+                        value={primaryGuest.state}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Nationality *</label>
+                      <input
+                        type="text"
+                        name="nationality"
+                        value={primaryGuest.nationality}
+                        onChange={handlePrimaryGuestChange}
+                        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              {/* Stay Information */}
+              <div className="bg-white rounded-lg border border-gray-200">
+                <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-5 h-5 text-indigo-600" />
+                    <h3 className="text-lg font-medium text-gray-900">Stay Information</h3>
+                  </div>
+                </div>
+                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Room Number *</label>
+                    <input
+                      type="text"
+                      name="roomNumber"
+                      value={formData.roomNumber}
+                      onChange={handleFormDataChange}
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Purpose of Visit</label>
                     <select
-                      id="idType"
-                      name="idType"
-                      value={primaryGuest.idType}
-                      onChange={handlePrimaryGuestChange}
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      name="purpose"
+                      value={formData.purpose}
+                      onChange={handleFormDataChange}
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     >
-                      {idTypeOptions.map(type => (
-                        <option key={type} value={type}>{type}</option>
+                      {purposeOptions.map(purpose => (
+                        <option key={purpose} value={purpose}>{purpose}</option>
                       ))}
                     </select>
                   </div>
-
-                  {/* ID Number */}
-                  <div className="col-span-6 sm:col-span-4">
-                    <label htmlFor="idNumber" className="block text-sm font-medium text-gray-700">ID Number</label>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Check-in Date *</label>
                     <input
-                      type="text"
-                      name="idNumber"
-                      id="idNumber"
-                      value={primaryGuest.idNumber}
-                      onChange={handlePrimaryGuestChange}
-                      className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.idNumber ? 'border-red-300' : ''}`}
+                      type="date"
+                      name="checkInDate"
+                      value={formData.checkInDate}
+                      onChange={handleFormDataChange}
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     />
-                    {errors.idNumber && <p className="mt-2 text-sm text-red-600">{errors.idNumber}</p>}
                   </div>
-
-                  {/* ID Card Upload */}
-                  <div className="col-span-6">
-                    <label className="block text-sm font-medium text-gray-700">ID Card Upload</label>
-                    {renderIdCardUpload(
-                      primaryGuest.idCardPreview,
-                      handlePrimaryGuestFileUpload,
-                      errors.primaryGuestIdCard
-                    )}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Check-out Date *</label>
+                    <input
+                      type="date"
+                      name="checkOutDate"
+                      value={formData.checkOutDate}
+                      onChange={handleFormDataChange}
+                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    />
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Additional Bachelor Guests */}
-            {formData.category === 'group' && formData.bachelorCount > 1 && (
-              <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-                <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
-                  <h3 className="text-lg leading-6 font-medium text-white">Additional Guests Information</h3>
-                </div>
-                <div className="border-t border-gray-200">
-                  {additionalGuests.map((guest, index) => (
-                    <div key={index} className="px-4 py-5 sm:p-6 border-b border-gray-200">
-                      <h4 className="text-lg font-medium text-gray-900 mb-4">Guest {index + 2}</h4>
-                      <div className="grid grid-cols-6 gap-6">
-                        {/* Name */}
-                        <div className="col-span-6 sm:col-span-3">
-                          <label className="block text-sm font-medium text-gray-700">Full Name</label>
-                          <input
-                            type="text"
-                            value={guest.name}
-                            onChange={(e) => handleAdditionalGuestChange(index, 'name', e.target.value)}
-                            className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors[`additionalGuest${index}name`] ? 'border-red-300' : ''}`}
-                          />
-                          {errors[`additionalGuest${index}name`] && (
-                            <p className="mt-2 text-sm text-red-600">{errors[`additionalGuest${index}name`]}</p>
-                          )}
-                        </div>
-{/* Date of Birth */}
-<div className="col-span-6 sm:col-span-3">
-  <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-  <input
-    type="date"
-    value={guest.dob}
-    onChange={(e) => handleAdditionalGuestChange(index, 'dob', e.target.value)}
-    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
-  />
-</div>
-                        {/* Mobile */}
-                        <div className="col-span-6 sm:col-span-3">
-                          <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
-                          <input
-                            type="text"
-                            value={guest.mobile}
-                            onChange={(e) => handleAdditionalGuestChange(index, 'mobile', e.target.value)}
-                            className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors[`additionalGuest${index}mobile`] ? 'border-red-300' : ''}`}
-                          />
-                          {errors[`additionalGuest${index}mobile`] && (
-                            <p className="mt-2 text-sm text-red-600">{errors[`additionalGuest${index}mobile`]}</p>
-                          )}
-                        </div>
-
-                        {/* ID Type */}
-                        <div className="col-span-6 sm:col-span-2">
-                          <label className="block text-sm font-medium text-gray-700">ID Type</label>
-                          <select
-                            value={guest.idType}
-                            onChange={(e) => handleAdditionalGuestChange(index, 'idType', e.target.value)}
-                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          >
-                            {idTypeOptions.map(type => (
-                              <option key={type} value={type}>{type}</option>
-                            ))}
-                          </select>
-                        </div>
-
-                        {/* ID Number */}
-                        <div className="col-span-6 sm:col-span-4">
-                          <label className="block text-sm font-medium text-gray-700">ID Number</label>
-                          <input
-                            type="text"
-                            value={guest.idNumber}
-                            onChange={(e) => handleAdditionalGuestChange(index, 'idNumber', e.target.value)}
-                            className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border
-                               border-gray-300 rounded-md ${errors[`additionalGuest${index}idNumber`] ? 'border-red-300' : ''}`}
-                          />
-                          {errors[`additionalGuest${index}idNumber`] && (
-                            <p className="mt-2 text-sm text-red-600">{errors[`additionalGuest${index}idNumber`]}</p>
-                          )}
-                        </div>
-
-                        {/* ID Card Upload */}
-                        <div className="col-span-6">
-                          <label className="block text-sm font-medium text-gray-700">ID Card Upload</label>
-                          {renderIdCardUpload(
-                            guest.idCardPreview,
-                            (e) => handleAdditionalGuestFileUpload(index, e),
-                            errors[`additionalGuest${index}IdCard`]
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+  
+              {/* Form Actions */}
+              <div className="flex justify-end space-x-4 pt-6">
+                <button
+                  type="button"
+                  onClick={() => navigate('/hotel-dashboard')}
+                  className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  {isSubmitting ? 'Registering...' : 'Register Guest'}
+                </button>
               </div>
-            )}
-
-{/* Stay Information */}
-<div className="bg-white shadow overflow-hidden sm:rounded-lg">
-  <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-blue-600 to-indigo-700">
-    <h3 className="text-lg leading-6 font-medium text-white">Stay Information</h3>
-  </div>
-  <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
-    <div className="grid grid-cols-6 gap-6">
-      {/* Room Number - Moved from Primary Guest Information */}
-      <div className="col-span-6 sm:col-span-3">
-        <label htmlFor="roomNumber" className="block text-sm font-medium text-gray-700">Room Number</label>
-        <input
-          type="text"
-          name="roomNumber"
-          id="roomNumber"
-          value={formData.roomNumber}
-          onChange={handleFormDataChange}
-          className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md ${errors.roomNumber ? 'border-red-300' : ''}`}
-        />
-        {errors.roomNumber && <p className="mt-2 text-sm text-red-600">{errors.roomNumber}</p>}
-      </div>
-
-      {/* Check-in Date */}
-      <div className="col-span-6 sm:col-span-3">
-        <label htmlFor="checkInDate" className="block text-sm font-medium text-gray-700">Check-in Date</label>
-        <input
-          type="date"
-          name="checkInDate"
-          id="checkInDate"
-          value={formData.checkInDate}
-          onChange={handleFormDataChange}
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-        />
-      </div>
-
-      {/* Check-out Date */}
-      <div className="col-span-6 sm:col-span-3">
-        <label htmlFor="checkOutDate" className="block text-sm font-medium text-gray-700">Check-out Date</label>
-        <input
-          type="date"
-          name="checkOutDate"
-          id="checkOutDate"
-          value={formData.checkOutDate}
-          onChange={handleFormDataChange}
-          className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md ${errors.checkOutDate ? 'border-red-300' : ''}`}
-        />
-        {errors.checkOutDate && <p className="mt-2 text-sm text-red-600">{errors.checkOutDate}</p>}
-      </div>
-
-      {/* Purpose of Visit */}
-      <div className="col-span-6 sm:col-span-3">
-        <label htmlFor="purpose" className="block text-sm font-medium text-gray-700">Purpose of Visit</label>
-        <select
-          id="purpose"
-          name="purpose"
-          value={formData.purpose}
-          onChange={handleFormDataChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          {purposeOptions.map(purpose => (
-            <option key={purpose} value={purpose}>{purpose}</option>
-          ))}
-        </select>
-      </div>
-    </div>
-  </div>
-</div>
-
-            {/* Submit Buttons */}
-            <div className="flex justify-end space-x-3">
-              <button
-                type="button"
-                onClick={() => navigate('/hotel-dashboard')}
-                className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-              >
-                {isSubmitting ? 'Registering...' : 'Register Guest'}
-              </button>
-            </div>
-          </form>
-        )}
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );
 };
-
 export default RegisterGuest;
