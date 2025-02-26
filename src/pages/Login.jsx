@@ -81,7 +81,7 @@ const LoginPage = () => {
           
           <div className="w-4/5 h-auto mb-8">
             <img 
-              src="/images/login.png"
+              src="/Images/login.png"
               alt="Login Illustration" 
               className="w-full h-auto object-contain"
             />
